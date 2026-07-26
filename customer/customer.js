@@ -167,7 +167,7 @@ function submitApplication() {
         return;
     }
 
-    fetch("http://localhost:3000/submit-loan", {
+    fetch("https://ai-based-loan-management-system.onrender.com/submit-loan", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
