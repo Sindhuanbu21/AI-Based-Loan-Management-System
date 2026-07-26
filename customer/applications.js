@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 function loadApplications(){
 
 
-    fetch("http://localhost:3000/applications")
+    fetch("https://ai-based-loan-management-system.onrender.com/applications")
 
     .then(response=>response.json())
 

@@ -18,7 +18,7 @@ function loadKYCDetails(){
     }
 
 
-    fetch("http://localhost:3000/applications")
+    fetch("https://ai-based-loan-management-system.onrender.com/applications")
 
 
     .then(response => response.json())
@@ -59,23 +59,19 @@ function loadKYCDetails(){
 
 
             document.getElementById("aadhaarLink").href =
-            "http://localhost:3000" + application.documents.aadhaar;
-
+            "https://ai-based-loan-management-system.onrender.com" + application.documents.aadhaar;
 
             document.getElementById("panLink").href =
-            "http://localhost:3000" + application.documents.pan;
-
+            "https://ai-based-loan-management-system.onrender.com" + application.documents.pan;
 
             document.getElementById("salaryLink").href =
-            "http://localhost:3000" + application.documents.salary;
-
+            "https://ai-based-loan-management-system.onrender.com" + application.documents.salary;
 
             document.getElementById("bankLink").href =
-            "http://localhost:3000" + application.documents.bank;
+            "https://ai-based-loan-management-system.onrender.com" + application.documents.bank;
 
-
-            document.getElementById("photoLink").href =
-            "http://localhost:3000" + application.documents.photo;
+           document.getElementById("photoLink").href =
+           "https://ai-based-loan-management-system.onrender.com" + application.documents.photo;
 
 
         }

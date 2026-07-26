@@ -85,8 +85,7 @@ function getPriorityLabel(priority){
 function loadPriorityQueue(){
 
 
-fetch("http://localhost:3000/applications")
-
+fetch("https://ai-based-loan-management-system.onrender.com/applications")
 
 .then(response=>response.json())
 

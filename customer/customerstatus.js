@@ -1,7 +1,6 @@
 // Get latest loan application from backend
 
-fetch("http://localhost:3000/get-loans")
-
+fetch("https://ai-based-loan-management-system.onrender.com/get-loans")
 .then(response => response.json())
 
 .then(loans => {
