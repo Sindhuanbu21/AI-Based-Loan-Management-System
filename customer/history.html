@@ -173,8 +173,7 @@
 
 async function loadLoans(){
 
-    const res=await fetch("http://localhost:3000/get-loans");
-
+    const res=await fetch("https://ai-based-loan-management-system.onrender.com/get-loans");
     const data=await res.json();
 
     const table=document.getElementById("loanTable");
