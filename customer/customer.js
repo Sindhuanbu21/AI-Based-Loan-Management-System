@@ -15,7 +15,7 @@ function registerCustomer() {
     }
 
 
-    fetch("http://https://ai-based-loan-management-system.onrender.com", {
+    fetch("https://ai-based-loan-management-system.onrender.com/register", {
 
         method:"POST",
 
@@ -60,8 +60,7 @@ function loginCustomer(){
     const username=document.getElementById("customerUsername").value;
 const password=document.getElementById("customerPassword").value;
 
-    fetch("http://https://ai-based-loan-management-system.onrender.com",{
-
+    fetch("https://ai-based-loan-management-system.onrender.com/login", {
         method:"POST",
 
         headers:{
@@ -120,7 +119,8 @@ function loginAndSubmit() {
     const username = document.getElementById("customerUsername").value;
 const password = document.getElementById("customerPassword").value;
 
-    fetch("http://https://ai-based-loan-management-system.onrender.com", {
+    fetch("https://ai-based-loan-management-system.onrender.com/login", {
+
         method: "POST",
         headers: {
             "Content-Type": "application/json"
