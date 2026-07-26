@@ -29,51 +29,75 @@
         👤 Customer Registration
     </h3>
 
+
+    <form autocomplete="off">
+
+
     <input
         type="text"
         id="fullname"
+        name="fullname"
         placeholder="Enter Full Name"
+        autocomplete="new-name"
         required>
+
 
     <input
         type="tel"
         id="mobile"
+        name="mobile"
         maxlength="10"
         placeholder="Enter 10 Digit Mobile Number"
+        autocomplete="off"
         required>
+
 
     <input
         type="email"
         id="email"
+        name="email"
         placeholder="Enter Email Address"
+        autocomplete="new-email"
         required>
+
 
     <input
         type="text"
         id="username"
+        name="username"
         placeholder="Create Username"
-        autocomplete="off"
+        autocomplete="new-username"
         required>
+
 
     <input
         type="password"
         id="password"
+        name="password"
         placeholder="Create Password"
         autocomplete="new-password"
         required>
 
+
     <input
         type="password"
         id="confirmPassword"
+        name="confirmPassword"
         placeholder="Confirm Password"
         autocomplete="new-password"
         required>
 
-    <button onclick="registerCustomer()">
+
+    <button type="button" onclick="registerCustomer()">
         Register
     </button>
 
+
+    </form>
+
+
     <p id="message"></p>
+
 
     <p class="register-text">
         Already have an account?
@@ -82,19 +106,24 @@
         </a>
     </p>
 
+
     <p class="register-text">
         <a href="customerhome.html">
             ← Back to Home
         </a>
     </p>
 
+
     <p class="security">
         🔒 Your information is securely protected.
     </p>
 
+
 </div>
 
+
 <script src="customer.js"></script>
+
 
 </body>
 
