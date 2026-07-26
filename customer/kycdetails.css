@@ -1,0 +1,224 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f4f7fc;
+    padding:30px;
+
+}
+
+.container{
+
+    max-width:900px;
+    margin:auto;
+
+}
+
+h1{
+
+    text-align:center;
+    color:#1e293b;
+    margin-bottom:25px;
+    font-size:32px;
+
+}
+
+/* Customer Details */
+
+.details-card{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    padding:25px;
+
+    margin-bottom:30px;
+
+}
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.row:last-child{
+
+    border-bottom:none;
+
+}
+
+.row span{
+
+    font-weight:bold;
+
+    color:#374151;
+
+    font-size:16px;
+
+}
+
+.row p{
+
+    color:#111827;
+
+    font-size:16px;
+
+}
+
+/* Documents */
+
+.documents{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    padding:25px;
+
+}
+
+.documents h2{
+
+    margin-bottom:20px;
+
+    color:#1e293b;
+
+}
+
+.document-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    border:1px solid #e5e7eb;
+
+}
+
+.document-card span{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+/* Button */
+
+.view-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 22px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+/* Back Button */
+
+.back{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+.back button{
+
+    background:#0f172a;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.back button:hover{
+
+    background:#1e293b;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.row,
+.document-card{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+.view-btn{
+
+    width:100%;
+
+}
+
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Officer Dashboard</title>
+
+    <link rel="stylesheet" href="officerdashboard.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Finance Officer</h2>
+
+        <ul>
+
+            <li><a href="officerdashboard.html">🏠 Dashboard</a></li>
+
+            <li><a href="applications.html">📄 Loan Applications</a></li>
+
+            <li><a href="kycverification.html">🪪 KYC Verification</a></li>
+
+            <li><a href="priorityqueue.html">⭐ Priority Queue</a></li>
+
+            <li><a href="history.html">📜 Loan History</a></li>
+
+            <li><a href="officerlogin.html">🚪 Logout</a></li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="main-content">
+
+        <div class="header">
+
+            <h1>Finance Officer Dashboard</h1>
+
+            <p id="welcomeMessage">
+                Welcome Officer
+            </p>
+
+        </div>
+
+
+        <!-- Dashboard Cards -->
+
+        <div class="cards">
+
+            <div class="card" onclick="openApplications()">
+
+                <h3>Loan Applications</h3>
+
+                <p>
+                    View all customer loan applications.
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openKYC()">
+
+                <h3>KYC Verification</h3>
+
+                <p>
+                    Verify Aadhaar, PAN, Salary Slip and Bank Statement.
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openPriority()">
+
+                <h3>Priority Queue</h3>
+
+                <p>
+                    View emergency and high-priority applications.
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openHistory()">
+
+                <h3>Loan History</h3>
+
+                <p>
+                    View all submitted loan records.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="officerdashboard.js"></script>
+
+</body>
+</html>

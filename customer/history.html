@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Loan History</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#dbeafe,#eef3fb,#ffffff);
+            padding:40px;
+        }
+
+        .container{
+            max-width:1300px;
+            margin:auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#1e3c72;
+            font-size:40px;
+            margin-bottom:40px;
+        }
+
+        .table-card{
+
+            background:white;
+            border-radius:20px;
+            padding:30px;
+            box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+        }
+
+        table{
+
+            width:100%;
+            border-collapse:collapse;
+
+        }
+
+        th{
+
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            color:white;
+            padding:18px;
+            font-size:18px;
+
+        }
+
+        td{
+
+            padding:16px;
+            text-align:center;
+            border-bottom:1px solid #ddd;
+            font-size:17px;
+
+        }
+
+        tr:nth-child(even){
+
+            background:#f7fbff;
+
+        }
+
+        tr:hover{
+
+            background:#dbeafe;
+            transition:.3s;
+
+        }
+
+        .eligible{
+
+            background:#28a745;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+            font-weight:bold;
+
+        }
+
+        .review{
+
+            background:#ff9800;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+            font-weight:bold;
+
+        }
+
+        .noteligible{
+
+            background:#f44336;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+            font-weight:bold;
+
+        }
+
+        .low{
+
+            background:#28a745;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+        }
+
+        .medium{
+
+            background:#ff9800;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+        }
+
+        .high{
+
+            background:#f44336;
+            color:white;
+            padding:8px 18px;
+            border-radius:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📜 Loan Application History</h1>
+
+<div class="table-card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Application ID</th>
+<th>Applicant</th>
+<th>Mobile</th>
+<th>Loan Amount</th>
+<th>Loan Type</th>
+<th>Eligibility</th>
+<th>Risk</th>
+
+</tr>
+
+</thead>
+
+<tbody id="loanTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+async function loadLoans(){
+
+    const res=await fetch("http://localhost:3000/get-loans");
+
+    const data=await res.json();
+
+    const table=document.getElementById("loanTable");
+
+    table.innerHTML="";
+
+    data.forEach(loan=>{
+
+        let eligibilityClass="";
+
+        if(loan.eligibility==="Eligible")
+            eligibilityClass="eligible";
+
+        else if(loan.eligibility==="Under Review")
+            eligibilityClass="review";
+
+        else
+            eligibilityClass="noteligible";
+
+
+        let riskClass="";
+
+        if(loan.risk==="Low")
+            riskClass="low";
+
+        else if(loan.risk==="Medium")
+            riskClass="medium";
+
+        else
+            riskClass="high";
+
+
+        table.innerHTML+=`
+
+        <tr>
+
+        <td>${loan.applicationId}</td>
+
+        <td>${loan.name}</td>
+
+        <td>${loan.mobile}</td>
+
+        <td>₹ ${loan.amount}</td>
+
+        <td>${loan.loanType}</td>
+
+        <td><span class="${eligibilityClass}">${loan.eligibility}</span></td>
+
+        <td><span class="${riskClass}">${loan.risk}</span></td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+loadLoans();
+
+</script>
+
+</body>
+
+</html>

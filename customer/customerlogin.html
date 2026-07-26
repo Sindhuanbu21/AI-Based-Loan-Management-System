@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login & Loan Application</title>
+
+  <link rel="stylesheet" href="customerlogin.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏦 Customer Loan Portal</h1>
+
+    <p class="subtitle">
+        Login and complete your loan application in one step.
+    </p>
+
+    <!-- ========================= -->
+    <!-- STEP 1: LOGIN -->
+    <!-- ========================= -->
+
+    <div class="card">
+
+        <h2>🔐 Login Details</h2>
+
+        <label>Username</label>
+<input
+    type="text"
+    id="customerUsername"
+    name="customer_username"
+    placeholder="Enter Username"
+    autocomplete="off">
+
+<label>Password</label>
+<input
+    type="password"
+    id="customerPassword"
+    name="customer_password"
+    placeholder="Enter Password"
+    autocomplete="new-password">
+    </div>
+
+    <!-- ========================= -->
+    <!-- STEP 2: PERSONAL DETAILS -->
+    <!-- ========================= -->
+
+    <div class="card">
+
+        <h2>👤 Personal Information</h2>
+
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter Full Name">
+
+        <label>Mobile Number</label>
+        <input type="tel" id="mobile" maxlength="10" placeholder="Enter Mobile Number">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter Email">
+
+        <label>Gender</label>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Address</label>
+        <textarea id="address" rows="3" placeholder="Enter Address"></textarea>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- STEP 3: LOAN DETAILS -->
+    <!-- ========================= -->
+
+    <div class="card">
+
+        <h2>💰 Loan Details</h2>
+
+        <label>Loan Type</label>
+        <select id="loanType">
+            <option value="">Select Loan Type</option>
+            <option>Personal Loan</option>
+            <option>Home Loan</option>
+            <option>Education Loan</option>
+            <option>Business Loan</option>
+        </select>
+
+        <label>Loan Amount (₹)</label>
+        <input type="number" id="amount" placeholder="Enter Amount">
+
+        <label>Tenure</label>
+        <select id="tenure">
+            <option value="">Select Tenure</option>
+            <option>12 Months</option>
+            <option>24 Months</option>
+            <option>36 Months</option>
+            <option>60 Months</option>
+        </select>
+
+        <label>Purpose</label>
+        <select id="purpose">
+            <option value="">Select Purpose</option>
+            <option>Medical</option>
+            <option>Education</option>
+            <option>Business</option>
+            <option>Marriage</option>
+        </select>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- INFO BOX -->
+    <!-- ========================= -->
+
+    <div class="ai-box">
+
+        <h2>ℹ️ Important Instructions</h2>
+
+        <ul>
+            <li>✔ First login details will be verified</li>
+            <li>✔ Then personal details must be filled correctly</li>
+            <li>✔ Loan request will be processed after submission</li>
+            <li>⚠ False information may reject application</li>
+        </ul>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- DECLARATION -->
+    <!-- ========================= -->
+
+    <div class="checkbox">
+
+        <input type="checkbox" id="agree">
+
+        <label for="agree">
+            I confirm all details are correct
+        </label>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- BUTTON -->
+    <!-- ========================= -->
+
+    <button type="button" onclick="loginAndSubmit()">
+    Submit Application
+</button>
+
+<br><br>
+
+<button type="button" onclick="window.location.href='customerdashboard.html'">
+    Go to Dashboard
+</button>
+
+    <p id="message"></p>
+
+</div>
+
+<script src="customer.js"></script>
+</body>
+</html>

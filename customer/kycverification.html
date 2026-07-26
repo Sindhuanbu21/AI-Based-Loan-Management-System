@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KYC Verification</title>
+
+    <link rel="stylesheet" href="kycverification.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>KYC Verification</h1>
+
+    <p class="subtitle">
+        Verify customer KYC documents uploaded during loan application.
+    </p>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Customer..."
+        >
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Application ID</th>
+                <th>Customer Name</th>
+                <th>KYC Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="kycTableBody">
+
+            <!-- Loaded using JavaScript -->
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="kycverification.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KYC Details</title>
+
+    <link rel="stylesheet" href="kycdetails.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Customer KYC Details</h1>
+
+    <div class="details-card">
+
+        <div class="row">
+            <span>Application ID</span>
+            <p id="applicationId"></p>
+        </div>
+
+        <div class="row">
+            <span>Customer Name</span>
+            <p id="customerName"></p>
+        </div>
+
+        <div class="row">
+            <span>KYC Status</span>
+            <p id="kycStatus"></p>
+        </div>
+
+    </div>
+
+    <div class="documents">
+
+        <h2>Uploaded Documents</h2>
+
+        <div class="document-card">
+
+            <span>🪪 Aadhaar Card</span>
+
+            <a id="aadhaarLink" target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+
+        </div>
+
+        <div class="document-card">
+
+            <span>🆔 PAN Card</span>
+
+            <a id="panLink" target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+
+        </div>
+
+        <div class="document-card">
+
+            <span>💼 Salary Slip</span>
+
+            <a id="salaryLink" target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+
+        </div>
+
+        <div class="document-card">
+
+            <span>🏦 Bank Statement</span>
+
+            <a id="bankLink" target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+
+        </div>
+
+        <div class="document-card">
+
+            <span>📷 Passport Size Photo</span>
+
+            <a id="photoLink" target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="back">
+
+        <button onclick="history.back()">
+            ⬅ Back
+        </button>
+
+    </div>
+
+</div>
+
+<script src="kycdetails.js"></script>
+
+</body>
+
+</html>

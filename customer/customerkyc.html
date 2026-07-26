@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KYC Document Verification</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Segoe UI",sans-serif;
+        }
+
+        body{
+            background:#eef3fb;
+            padding:40px;
+        }
+
+        h1{
+            text-align:center;
+            color:#1e3c72;
+            margin-bottom:40px;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:auto;
+        }
+
+        .documents{
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:25px;
+
+        }
+
+        .card{
+
+            background:white;
+            padding:25px;
+            border-radius:18px;
+            box-shadow:0 8px 18px rgba(0,0,0,0.12);
+            text-align:center;
+
+        }
+
+        .card h2{
+
+            color:#1e3c72;
+            margin-bottom:20px;
+
+        }
+
+        input[type=file]{
+
+            width:100%;
+            margin-bottom:15px;
+
+        }
+
+        button{
+
+            width:100%;
+            padding:12px;
+            background:#2a5298;
+            color:white;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+
+        }
+
+        button:hover{
+
+            background:#1e3c72;
+
+        }
+
+        p{
+
+            margin-top:15px;
+            font-size:18px;
+            font-weight:bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 KYC Document Verification</h1>
+
+<div class="documents">
+
+<div class="card">
+
+<h2>🪪 Aadhaar Card</h2>
+
+<input type="file" id="aadhaarFile">
+
+<button type="button" onclick="uploadDocument('aadhaarFile')">
+    Upload Aadhaar
+</button>
+
+<p id="aadhaarStatus"></p>
+
+</div>
+
+<div class="card">
+
+<h2>💳 PAN Card</h2>
+
+<input type="file" id="panFile">
+
+<button onclick="uploadDocument('panFile')">
+Upload PAN
+</button>
+
+<p id="panStatus"></p>
+
+</div>
+
+<div class="card">
+
+<h2>🏦 Bank Statement</h2>
+
+<input type="file" id="bankFile">
+
+<button onclick="uploadDocument('bankFile')">
+Upload Bank Statement
+</button>
+
+<p id="bankStatus"></p>
+
+</div>
+
+<div class="card">
+
+<h2>💰 Salary Slip</h2>
+
+<input type="file" id="salaryFile">
+
+<button onclick="uploadDocument('salaryFile')">
+Upload Salary Slip
+</button>
+
+<p id="salaryStatus"></p>
+
+</div>
+
+<div class="card">
+
+<h2>📷 Passport Photo</h2>
+
+<input type="file" id="photoFile">
+
+<button onclick="uploadDocument('photoFile')">
+Upload Photo
+</button>
+
+<p id="photoStatus"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+async function uploadDocument(inputId){
+
+    const file=document.getElementById(inputId).files[0];
+
+    if(!file){
+        alert("Please choose a file");
+        return;
+    }
+
+    const formData = new FormData();
+
+formData.append("file", file);
+
+formData.append(
+    "customerEmail",
+    localStorage.getItem("customerEmail")
+);
+
+formData.append(
+    "documentType",
+    inputId.replace("File","")
+);
+
+    try{
+
+        const response=await fetch("http://localhost:3000/upload",{
+
+            method:"POST",
+            body:formData
+
+        });
+
+        const data=await response.json();
+
+        const statusId=inputId.replace("File","Status");
+
+        if(data.success){
+
+    const fileName = data.file;
+
+    const statusBox = document.getElementById(statusId);
+
+    statusBox.innerHTML = "";
+    statusBox.style.color = "green";
+
+    const successText = document.createElement("div");
+    successText.innerText = "✅ Uploaded Successfully";
+
+
+    const link = document.createElement("a");
+
+    link.href = `http://localhost:3000/uploads/${fileName}`;
+
+    link.target = "_blank";
+
+    link.innerText = "👁 View Document";
+
+
+    statusBox.appendChild(successText);
+    statusBox.appendChild(link);
+
+
+}
+else{
+
+    document.getElementById(statusId).innerHTML="❌ Failed";
+
+}
+    }catch(err){
+
+        console.log(err);
+
+        const statusId=inputId.replace("File","Status");
+
+        document.getElementById(statusId).innerHTML="❌ Server Error";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Track Status</title>
+
+    <link rel="stylesheet" href="customerstatus.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🏦 Loan Track Status</h1>
+
+        <p class="subtitle">
+            Check your loan application progress and payment details.
+        </p>
+
+        <div class="status-card">
+
+            <div class="row">
+                <span>🆔 Application ID</span>
+                <span id="applicationId">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>👤 Customer Name</span>
+                <span id="customerName">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>💰 Loan Amount</span>
+                <span id="loanAmount">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>📈 Interest Rate</span>
+                <span id="interestRate">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>💵 Interest Amount</span>
+                <span id="interestAmount">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>💳 Monthly EMI</span>
+                <span id="emi">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>💲 Total Payable</span>
+                <span id="totalPayable">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>✅ Eligibility</span>
+                <span id="eligibility">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>⚠️ Risk Level</span>
+                <span id="risk">Loading...</span>
+            </div>
+
+            <div class="row">
+                <span>📄 KYC Status</span>
+                <span id="kycStatus">Verified</span>
+            </div>
+
+            <div class="row">
+                <span>📌 Loan Status</span>
+                <span id="status">Loading...</span>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button onclick="window.location.href='customerdashboard.html'">
+                ⬅ Back to Dashboard
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="customerstatus.js"></script>
+
+</body>
+
+</html>
