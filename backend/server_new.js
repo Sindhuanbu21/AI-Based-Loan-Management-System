@@ -1,5 +1,5 @@
 require("dotenv").config({ path: require("path").join(__dirname, ".env") });
-
+const LoanApplication = require("./models/LoanApplication");
 const Groq = require("groq-sdk");
 const express = require("express");
 const cors = require("cors");
@@ -333,12 +333,11 @@ app.post("/submit-loan", (req, res) => {
 
     };
 
-    applications.push(newApplication);
+    const application = new LoanApplication(newApplication);
 
-    fs.writeFileSync(
-        filePath,
-        JSON.stringify(applications, null, 2)
-    );
+application.save()
+
+.then(() => {
 
     res.json({
 
@@ -349,6 +348,22 @@ app.post("/submit-loan", (req, res) => {
         message: "Application Submitted Successfully"
 
     });
+
+})
+
+.catch((err) => {
+
+    console.log(err);
+
+    res.status(500).json({
+
+        success: false,
+
+        message: "Failed to save application"
+
+    });
+
+});
 
 });
 
@@ -378,110 +393,55 @@ app.get("/get-loans", (req, res) => {
 // KYC DOCUMENT UPLOAD
 // ============================
 
-app.post("/upload", upload.single("file"), (req,res)=>{
+app.post("/upload", upload.single("file"), async (req, res) => {
 
-
-    try{
-
+    try {
 
         const email = req.body.customerEmail;
-
         const documentType = req.body.documentType;
 
+        const application = await LoanApplication.findOne({ email: email });
 
-        const filePath = path.join(__dirname,"applications.json");
-
-
-        let applications = [];
-
-
-        if(fs.existsSync(filePath)){
-
-            applications = JSON.parse(
-                fs.readFileSync(filePath,"utf8")
-            );
-
-        }
-
-
-        const applicationIndex = applications.findIndex(
-            app => app.email === email
-        );
-
-
-        if(applicationIndex === -1){
+        if (!application) {
 
             return res.status(404).json({
-
-                success:false,
-
-                message:"Application not found"
-
+                success: false,
+                message: "Application not found"
             });
 
         }
 
+        const fileURL = "/uploads/" + req.file.filename;
 
-
-        const fileURL = 
-        "/uploads/" + req.file.filename;
-
-
-
-        if(!applications[applicationIndex].documents){
-
-            applications[applicationIndex].documents = {};
-
+        if (!application.documents) {
+            application.documents = {};
         }
 
+        application.documents[documentType] = fileURL;
 
-
-        applications[applicationIndex]
-        .documents[documentType] = fileURL;
-
-
-
-        fs.writeFileSync(
-
-            filePath,
-
-            JSON.stringify(applications,null,2)
-
-        );
-
-
+        await application.save();
 
         res.json({
 
-            success:true,
-
-            message:"Document uploaded successfully",
-
-            file:req.file.filename
+            success: true,
+            message: "Document uploaded successfully",
+            file: req.file.filename
 
         });
 
-
-
     }
+    catch (error) {
 
-    catch(error){
-
-
-        console.log(error);
-
+        console.log("UPLOAD ERROR:", error);
 
         res.status(500).json({
 
-            success:false,
-
-            message:"Upload failed"
+            success: false,
+            message: "Upload failed"
 
         });
 
-
     }
-
 
 });
 app.get("/test", (req, res) => {
