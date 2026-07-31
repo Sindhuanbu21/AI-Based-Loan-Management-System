@@ -21,7 +21,7 @@ function loadApplicationDetails(){
 
 
 
-    fetch("https://ai-based-loan-management-system.onrender.com/get-loans")
+    fetch("https://ai-based-loan-management-system.onrender.com/applications")
 
 
     .then(response=>response.json())
