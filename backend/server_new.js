@@ -398,6 +398,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
         const email = req.body.customerEmail;
         const documentType = req.body.documentType;
+        console.log("Email:", email);
+        console.log("Document Type:", documentType);
+        console.log("File:", req.file?.filename);
 
         const application = await LoanApplication.findOne({ email: email });
 
@@ -417,6 +420,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         }
 
         application.documents[documentType] = fileURL;
+
+        console.log(application.documents);
 
         await application.save();
 
