@@ -311,11 +311,13 @@ app.post("/submit-loan", (req, res) => {
     // SAVE
     // ============================
 
-    const newApplication = {
+   const newApplication = {
 
         applicationId: "LA" + Date.now(),
 
         ...req.body,
+
+        tenure: tenureMonths,
 
         interestRate,
 
@@ -324,7 +326,7 @@ app.post("/submit-loan", (req, res) => {
         totalPayable: Math.round(totalPayable),
 
         emi,
-
+ 
         eligibility,
 
         risk,
