@@ -414,6 +414,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         }
 
         const fileURL = "/uploads/" + req.file.filename;
+        console.log("Saved file path:", req.file.path);
 
         if (!application.documents) {
             application.documents = {};
