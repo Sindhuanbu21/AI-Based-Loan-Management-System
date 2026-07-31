@@ -1,5 +1,5 @@
 require("dotenv").config({ path: require("path").join(__dirname, ".env") });
-const LoanApplication = require("./models/LoanApplication");
+const LoanApplication = require("./models/loanapplication");
 const Groq = require("groq-sdk");
 const express = require("express");
 const cors = require("cors");
