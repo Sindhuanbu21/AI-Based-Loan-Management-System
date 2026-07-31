@@ -353,14 +353,11 @@ application.save()
 
 .catch((err) => {
 
-    console.log(err);
+    console.error("SAVE ERROR:", err);
 
     res.status(500).json({
-
         success: false,
-
-        message: "Failed to save application"
-
+        message: err.message
     });
 
 });
