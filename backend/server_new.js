@@ -421,6 +421,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         }
 
         application.documents[documentType] = fileURL;
+        application.markModified("documents");
 
         console.log(application.documents);
 
