@@ -511,32 +511,23 @@ Rules:
     }
 });
 
-app.get("/applications", (req, res) => {
+app.get("/applications", async (req, res) => {
 
-    const fs = require("fs");
-    const path = require("path");
+    try {
 
+        const applications = await LoanApplication.find();
 
-    const filePath = path.join(__dirname, "applications.json");
+        res.json(applications);
 
+    } catch (err) {
 
-    fs.readFile(filePath, "utf8", (err, data) => {
+        console.log(err);
 
+        res.status(500).json({
+            message: "Failed to load applications"
+        });
 
-        if(err){
-
-            return res.status(500).json({
-                message:"Applications file not found"
-            });
-
-        }
-
-
-        res.json(JSON.parse(data));
-
-
-    });
-
+    }
 
 });
 
