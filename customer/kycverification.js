@@ -39,22 +39,28 @@ function displayApplications(applications) {
 
     tableBody.innerHTML = "";
 
-
     applications.forEach(app => {
 
+        // Check whether documents are actually uploaded
+        const documents = app.documents || {};
+
+        const hasDocuments =
+            documents.aadhaar &&
+            documents.pan &&
+            documents.bank &&
+            documents.salary &&
+            documents.photo;
+
         let kycStatus = "Pending";
+
         let button = `
             <button class="disabled-btn" disabled>
                 Pending
             </button>
         `;
 
-
-        // Uploaded Customers
-        if (
-            app.name.toLowerCase() === "priya" ||
-            app.name.toLowerCase() === "vithya"
-        ) {
+        // If all required documents are uploaded
+        if (hasDocuments) {
 
             kycStatus = "Uploaded";
 
@@ -65,9 +71,7 @@ function displayApplications(applications) {
                     View
                 </button>
             `;
-
         }
-
 
         tableBody.innerHTML += `
 
@@ -90,10 +94,7 @@ function displayApplications(applications) {
         `;
 
     });
-
 }
-
-
 
 // View Button
 
