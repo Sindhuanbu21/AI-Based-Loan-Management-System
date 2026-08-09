@@ -8,6 +8,9 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
 const Customer = require("./models/Customer");
 
 const client = new Groq({
@@ -15,6 +18,15 @@ const client = new Groq({
 });
 
 const app = express();
+// ============================
+// CLOUDINARY
+// ============================
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 app.use(cors({
     origin: "https://ai-based-loan-management-system-oji.vercel.app",
@@ -56,24 +68,23 @@ app.use("/uploads", express.static(uploadPath));
 // MULTER
 // ============================
 
-const storage = multer.diskStorage({
+// ============================
+// CLOUDINARY MULTER STORAGE
+// ============================
 
-    destination: (req,file,cb)=>{
-        cb(null,uploadPath);
-    },
+const storage = new CloudinaryStorage({
 
-    filename:(req,file,cb)=>{
+    cloudinary: cloudinary,
 
-        cb(
-            null,
-            Date.now()+"-"+file.originalname.replace(/[^a-zA-Z0-9.]/g,"_")
-        );
-
+    params: {
+        folder: "loan-management/kyc",
+        allowed_formats: ["jpg", "jpeg", "png", "pdf"],
+        resource_type: "auto"
     }
 
 });
 
-const upload = multer({storage});
+const upload = multer({ storage });
 
 
 // ============================
@@ -417,8 +428,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
         }
 
-        const fileURL = "/uploads/" + req.file.filename;
-        console.log("Saved file path:", req.file.path);
+        const fileURL = req.file.path;
+
+        console.log("Cloudinary URL:", fileURL);
 
         if (!application.documents) {
             application.documents = {};

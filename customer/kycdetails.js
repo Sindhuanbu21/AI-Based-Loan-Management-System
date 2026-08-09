@@ -53,36 +53,31 @@ function loadKYCDetails(){
 
         if(application.documents){
 
+    document.getElementById("kycStatus").innerText =
+        "Documents Uploaded";
 
-            document.getElementById("kycStatus").innerText =
-            "Documents Uploaded";
+    document.getElementById("aadhaarLink").href =
+        application.documents.aadhaar;
 
+    document.getElementById("panLink").href =
+        application.documents.pan;
 
-            document.getElementById("aadhaarLink").href =
-            "https://ai-based-loan-management-system.onrender.com" + application.documents.aadhaar;
+    document.getElementById("salaryLink").href =
+        application.documents.salary;
 
-            document.getElementById("panLink").href =
-            "https://ai-based-loan-management-system.onrender.com" + application.documents.pan;
+    document.getElementById("bankLink").href =
+        application.documents.bank;
 
-            document.getElementById("salaryLink").href =
-            "https://ai-based-loan-management-system.onrender.com" + application.documents.salary;
+    document.getElementById("photoLink").href =
+        application.documents.photo;
 
-            document.getElementById("bankLink").href =
-            "https://ai-based-loan-management-system.onrender.com" + application.documents.bank;
+}
+else{
 
-           document.getElementById("photoLink").href =
-           "https://ai-based-loan-management-system.onrender.com" + application.documents.photo;
+    document.getElementById("kycStatus").innerText =
+        "Documents Pending";
 
-
-        }
-        else{
-
-
-            document.getElementById("kycStatus").innerText =
-            "Documents Pending";
-
-
-        }
+}
 
 
 
