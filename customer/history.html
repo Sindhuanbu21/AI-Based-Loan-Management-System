@@ -175,12 +175,7 @@ async function loadLoans(){
 
    const res = await fetch("https://ai-based-loan-management-system.onrender.com/applications");
     const data=await res.json();
-    const customerEmail = localStorage.getItem("customerEmail");
-
-    const customerLoans = data.filter(
-    loan => loan.email === customerEmail
-);
-
+    const customerLoans = data;
     const table=document.getElementById("loanTable");
 
     table.innerHTML="";
