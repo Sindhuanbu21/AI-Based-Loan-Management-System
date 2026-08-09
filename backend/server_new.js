@@ -444,13 +444,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         await application.save();
 
         res.json({
-
-            success: true,
-            message: "Document uploaded successfully",
-            file: req.file.filename
-
+        success: true,
+        message: "Document uploaded successfully",
+        url: req.file.path
         });
-
     }
     catch (error) {
 

@@ -216,28 +216,24 @@ console.log("Document Type:", inputId.replace("File",""));
 
         if(data.success){
 
-    const fileName = data.file;
+   const statusBox = document.getElementById(statusId);
 
-    const statusBox = document.getElementById(statusId);
+statusBox.innerHTML = "";
+statusBox.style.color = "green";
 
-    statusBox.innerHTML = "";
-    statusBox.style.color = "green";
+const successText = document.createElement("div");
+successText.innerText = "✅ Uploaded Successfully";
 
-    const successText = document.createElement("div");
-    successText.innerText = "✅ Uploaded Successfully";
+const link = document.createElement("a");
 
+link.href = data.url;
 
-    const link = document.createElement("a");
+link.target = "_blank";
 
-    link.href = `https://ai-based-loan-management-system.onrender.com/uploads/${fileName}`;
+link.innerText = "👁 View Document";
 
-    link.target = "_blank";
-
-    link.innerText = "👁 View Document";
-
-
-    statusBox.appendChild(successText);
-    statusBox.appendChild(link);
+statusBox.appendChild(successText);
+statusBox.appendChild(link);
 
 
 }
